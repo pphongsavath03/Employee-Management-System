@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const connection = require('./assets/connection.js');
-const table = require('console.table');
 
 function startPrompt() {
     inquirer.prompt([{
