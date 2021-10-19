@@ -2,7 +2,13 @@ const inquirer = require('inquirer');
 const connection = require('./assets/connection.js');
 const questions = require('./assets/questions.js')
 
+
+displayLogo()
 start();
+
+function displayLogo() {
+    console.log('Employee Management System')
+}
 
 async function start() {
     const userChoice = await inquirer.prompt(questions.initialQuestion);
