@@ -1,6 +1,14 @@
 const inquirer = require('inquirer');
 const connection = require('./assets/connection.js');
 
+displayLogo()
+
+
+function displayLogo() {
+    console.log('Employee Management System');
+}
+
+
 function startPrompt() {
     inquirer.prompt([{
         type: "list",
@@ -104,12 +112,12 @@ function selectManager() {
 
 function addEmployee() {
     inquirer.prompt([{
-            name: "firstname",
+            name: "firstName",
             type: "input",
             message: "Enter their first name "
         },
         {
-            name: "lastname",
+            name: "lastName",
             type: "input",
             message: "Enter their last name "
         },
@@ -143,6 +151,7 @@ function addEmployee() {
     })
 }
 
+
 function updateEmployee() {
     connection.query("SELECT employee.last_name, role.title FROM employee JOIN role ON employee.role_id = role.id;", function(err, res) {
         // console.log(res)
@@ -168,21 +177,16 @@ function updateEmployee() {
             },
         ]).then(function(val) {
             var roleId = selectRole().indexOf(val.role) + 1
-            connection.query("UPDATE employee SET WHERE ?", {
-                    last_name: val.lastName
+            connection.query("UPDATE employee SET ? WHERE ?", {
+                last_name: val.lastName,
+                role: roleId,
+            }, function() {
+                if (err) throw err
+                startPrompt()
+            })
 
-                }, {
-                    role_id: roleId
-
-                },
-                function(err) {
-                    if (err) throw err
-                    console.table(val)
-                    startPrompt()
-                })
-
-        });
-    });
+        })
+    })
 
 }
 
@@ -197,8 +201,7 @@ function addRole() {
                 name: "Salary",
                 type: "input",
                 message: "What is the Salary?"
-
-            }
+            },
         ]).then(function(res) {
             connection.query(
                 "INSERT INTO role SET ?", {
@@ -212,8 +215,8 @@ function addRole() {
                 }
             )
 
-        });
-    });
+        })
+    })
 }
 
 function addDepartment() {
