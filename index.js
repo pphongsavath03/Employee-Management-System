@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const table = require('console.table')
 const connection = require('./assets/connection.js');
 const questions = require('./assets/questions.js')
 
