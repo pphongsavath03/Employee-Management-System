@@ -23,11 +23,11 @@ Walk Through Video: https://drive.google.com/file/d/1bA1i-yxp6TeKcjCtz5fcN8Qz4hs
 
 # Description:
 
-    As a user, you will be able to view, edit, and add the departments, roles, and employees in your company so that you can organize and plan your business.
+As a user, you will be able to view, edit, and add the departments, roles, and employees in your company so that you can organize and plan your business.
 
 
 # Installation & Usage:
 
-    User will be able to run application using "node index" in terminal.
+User will be able to run application using "node index" in terminal.
 
 
